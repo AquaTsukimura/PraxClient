@@ -85,10 +85,7 @@
             opacity: 0.6;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
 
         section {
             min-height: 100vh;
@@ -100,45 +97,31 @@
             text-align: center;
         }
 
-        /* --- THE AI HOSHINO STAR --- */
         .star-container {
             position: relative;
-            width: 160px;
-            height: 160px;
-            margin-bottom: 30px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .star-ai {
-            width: 100px;
-            height: 100px;
-            background: white;
-            /* Precise 5-point Star Geometry with Razor Thin Inner Depth */
-            clip-path: polygon(
-                50% 0%, 
-                54% 42%, 
-                98% 35%, 
-                58% 55%, 
-                79% 91%, 
-                50% 65%, 
-                21% 91%, 
-                42% 55%, 
-                2% 35%, 
-                46% 42%
-            );
-            filter: drop-shadow(0 0 15px white);
+        .ai-star-svg {
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 20px var(--primary));
             animation: starRotate 15s linear infinite;
         }
 
         .star-glow {
             position: absolute;
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle, rgba(255,102,178,0.8) 0%, transparent 70%);
-            animation: starPulse 4s ease-in-out infinite;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(255, 102, 178, 0.7) 0%, transparent 70%);
+            animation: starPulse 3.5s ease-in-out infinite;
             pointer-events: none;
+            z-index: -1;
         }
 
         @keyframes starRotate {
@@ -147,8 +130,8 @@
         }
 
         @keyframes starPulse {
-            0%, 100% { transform: scale(0.9); opacity: 0.4; }
-            50% { transform: scale(1.2); opacity: 0.8; }
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         .lies-tag {
@@ -185,15 +168,7 @@
             transition: 0.5s ease;
         }
 
-        .showcase-container:hover {
-            transform: rotateX(0deg) scale(1.02);
-        }
-
-        .showcase-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .showcase-img { width: 100%; height: auto; display: block; }
 
         .grid {
             display: grid;
@@ -214,19 +189,33 @@
         }
 
         .card:hover {
-            transform: scale(1.05) translateZ(30px);
+            transform: scale(1.05) translateZ(40px);
             border-color: var(--primary);
             background: rgba(255, 102, 178, 0.12);
-            box-shadow: 0 0 40px rgba(255, 102, 178, 0.2);
+            box-shadow: 0 0 50px rgba(255, 102, 178, 0.25);
             z-index: 10;
         }
 
-        .card h3 {
-            color: var(--primary);
-            font-family: var(--font-head);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+        .card h3 { color: var(--primary); font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 1rem; text-transform: uppercase;}
+
+        .credit-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.4s;
+        }
+
+        .profile-img {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 0 15px var(--primary);
         }
 
         .btn {
@@ -245,15 +234,9 @@
             box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
         }
 
-        .btn:hover {
-            background: white;
-            color: var(--primary);
-            transform: scale(1.05);
-        }
+        .btn:hover { background: white; color: var(--primary); transform: scale(1.05); }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -274,11 +257,13 @@
     <section id="home">
         <div class="star-container">
             <div class="star-glow"></div>
-            <div class="star-ai"></div>
+            <svg class="ai-star-svg" viewBox="0 0 100 100">
+                <polygon points="50,2 54,43 98,38 58,58 79,95 50,70 21,95 42,58 2,38 46,43" fill="white"/>
+            </svg>
         </div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
-        <p style="color: var(--text-dim); max-width: 650px;">The definitive hack suite for Blockman Go players who demand style and power. Bypassing limits with idol-tier performance.</p>
+        <p style="color: var(--text-dim); max-width: 650px;">The definitive hack suite for Blockman Go. Bypassing limits with idol-tier performance.</p>
         <a href="#download" class="btn" style="margin-top: 2rem;">Access Client</a>
     </section>
 
@@ -296,15 +281,51 @@
         <div class="grid">
             <div class="card">
                 <h3>Movement</h3>
-                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for latest bypasses.</p>
+                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for bypass.</p>
             </div>
             <div class="card">
                 <h3>Combat</h3>
-                <p style="color: var(--text-dim);">Configurable KillAura, Reach, and Hitbox Expanders for total dominance.</p>
+                <p style="color: var(--text-dim);">KillAura and Reach expanders for total dominance.</p>
             </div>
             <div class="card">
                 <h3>Visuals</h3>
-                <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP. See through every lie on the stage.</p>
+                <p style="color: var(--text-dim);">Full ESP and Tracers. See through every lie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="credits">
+        <p class="lies-tag">LIES ARE LOVE</p>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">THE BACKSTAGE</h2>
+        <div class="grid">
+            <div class="credit-card">
+                <img src="https://cdn.discordapp.com/avatars/1474319584134697117/71daebb87416096b29240dde8095995b.png?size=4096" class="profile-img" alt="Aqua">
+                <h3>AQUA</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">HEAD DEVELOPER</p>
+                <p style="color: var(--text-dim);">Discord: ?</p>
+            </div>
+            <div class="credit-card">
+                <img src="https://cdn.discordapp.com/avatars/1481481892443455680/64e9d1b1e297ac0f8dcef27dc65cf845.png?size=4096" class="profile-img" alt="Earth">
+                <h3>EARTH</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">ASSISTANT</p>
+                <p style="color: var(--text-dim);">Discord: @yezxow</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download">
+        <p class="lies-tag">LIES ARE LOVE</p>
+        <h2 style="font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 3rem;">GET THE CLIENT</h2>
+        <div style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center;">
+            <div class="card" style="padding:40px; width:320px; cursor:pointer;" onclick="window.location.href='Android.html'">
+                <h3>ANDROID</h3>
+                <p style="margin:15px 0; color: var(--text-dim);">Universal .APK Build</p>
+                <div class="btn" style="padding:10px 20px; font-size:0.8rem;">Download</div>
+            </div>
+            <div class="card" style="padding:40px; width:320px; opacity:0.5; cursor:not-allowed;">
+                <h3>WINDOWS</h3>
+                <p style="margin:15px 0; color: var(--text-dim);">Coming Soon</p>
+                <div class="btn" style="padding:10px 20px; font-size:0.8rem; background:#444;">Locked</div>
             </div>
         </div>
     </section>
@@ -313,60 +334,24 @@
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let stars = [];
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize);
         resize();
-
         class Star {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.opacity = Math.random();
-                this.speed = Math.random() * 0.3;
-            }
-            update() {
-                this.y -= this.speed;
-                if (this.y < 0) this.reset();
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 102, 178, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            constructor() { this.reset(); }
+            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2; this.opacity = Math.random(); this.speed = Math.random() * 0.3; }
+            update() { this.y -= this.speed; if (this.y < 0) this.reset(); }
+            draw() { ctx.fillStyle = `rgba(255, 102, 178, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-
-        for (let i = 0; i < 150; i++) {
-            stars.push(new Star());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            stars.forEach(s => {
-                s.update();
-                s.draw();
-            });
-            requestAnimationFrame(animate);
-        }
+        for (let i = 0; i < 150; i++) stars.push(new Star());
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); stars.forEach(s => { s.update(); s.draw(); }); requestAnimationFrame(animate); }
         animate();
 
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({
-                    top: target.offsetTop - 70,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
             });
         });
     </script>
