@@ -97,36 +97,48 @@
             text-align: center;
         }
 
-        .star-eye {
+        .star-container {
             position: relative;
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+            width: 120px;
+            height: 120px;
             margin-bottom: 25px;
-            filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 20px var(--primary)) drop-shadow(0 0 35px var(--secondary));
-            animation: eyeGlow 4s infinite ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: starRotate 10s linear infinite;
         }
 
-        .star-core {
+        .star-ai {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            background: white;
+            clip-path: polygon(50% 0%, 53% 43%, 100% 50%, 53% 57%, 50% 100%, 47% 57%, 0% 50%, 47% 43%);
+            filter: drop-shadow(0 0 10px white);
+        }
+
+        .star-ai.sub {
+            transform: rotate(45deg) scale(0.6);
             opacity: 0.8;
         }
 
-        @keyframes eyeGlow {
-            0%, 100% { 
-                transform: scale(1) rotate(0deg); 
-                filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 15px var(--primary)); 
-            }
-            50% { 
-                transform: scale(1.15) rotate(5deg); 
-                filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 35px var(--primary)) drop-shadow(0 0 55px var(--secondary)); 
-            }
+        .star-glow {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,102,178,0.6) 0%, transparent 70%);
+            animation: starPulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes starRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.9; }
         }
 
         .lies-tag {
@@ -256,8 +268,10 @@
     </nav>
 
     <section id="home">
-        <div class="star-eye">
-            <div class="star-core"></div>
+        <div class="star-container">
+            <div class="star-glow"></div>
+            <div class="star-ai"></div>
+            <div class="star-ai sub"></div>
         </div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
