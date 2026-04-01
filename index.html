@@ -99,13 +99,13 @@
 
         .star-container {
             position: relative;
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             margin-bottom: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: starRotate 10s linear infinite;
+            animation: starRotate 8s linear infinite;
         }
 
         .star-ai {
@@ -113,20 +113,19 @@
             width: 100%;
             height: 100%;
             background: white;
-            clip-path: polygon(50% 0%, 53% 43%, 100% 50%, 53% 57%, 50% 100%, 47% 57%, 0% 50%, 47% 43%);
+            clip-path: polygon(50% 0%, 51.5% 48.5%, 100% 50%, 51.5% 51.5%, 50% 100%, 48.5% 51.5%, 0% 50%, 48.5% 48.5%);
             filter: drop-shadow(0 0 10px white);
         }
 
-        .star-ai.sub {
-            transform: rotate(45deg) scale(0.6);
-            opacity: 0.8;
+        .star-ai.cross {
+            transform: rotate(45deg);
         }
 
         .star-glow {
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,102,178,0.6) 0%, transparent 70%);
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(255,102,178,0.7) 0%, transparent 70%);
             animation: starPulse 3s ease-in-out infinite;
             pointer-events: none;
         }
@@ -137,8 +136,8 @@
         }
 
         @keyframes starPulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.4; }
-            50% { transform: scale(1.2); opacity: 0.9; }
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
         }
 
         .lies-tag {
@@ -271,7 +270,7 @@
         <div class="star-container">
             <div class="star-glow"></div>
             <div class="star-ai"></div>
-            <div class="star-ai sub"></div>
+            <div class="star-ai cross"></div>
         </div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
