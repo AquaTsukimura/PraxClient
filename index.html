@@ -105,7 +105,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: starRotate 8s linear infinite;
+            animation: starRotate 12s linear infinite;
         }
 
         .star-ai {
@@ -113,19 +113,27 @@
             width: 100%;
             height: 100%;
             background: white;
-            clip-path: polygon(50% 0%, 51.5% 48.5%, 100% 50%, 51.5% 51.5%, 50% 100%, 48.5% 51.5%, 0% 50%, 48.5% 48.5%);
+            /* 10-point path for a 5-pointed star with razor-thin inner depth */
+            clip-path: polygon(
+                50% 0%, 
+                52% 45%, 
+                98% 35%, 
+                55% 52%, 
+                79% 91%, 
+                50% 60%, 
+                21% 91%, 
+                45% 52%, 
+                2% 35%, 
+                48% 45%
+            );
             filter: drop-shadow(0 0 10px white);
-        }
-
-        .star-ai.cross {
-            transform: rotate(45deg);
         }
 
         .star-glow {
             position: absolute;
-            width: 180%;
-            height: 180%;
-            background: radial-gradient(circle, rgba(255,102,178,0.7) 0%, transparent 70%);
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle, rgba(255,102,178,0.8) 0%, transparent 70%);
             animation: starPulse 3s ease-in-out infinite;
             pointer-events: none;
         }
@@ -136,8 +144,8 @@
         }
 
         @keyframes starPulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 1; }
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 0.9; }
         }
 
         .lies-tag {
@@ -270,7 +278,6 @@
         <div class="star-container">
             <div class="star-glow"></div>
             <div class="star-ai"></div>
-            <div class="star-ai cross"></div>
         </div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
@@ -301,42 +308,6 @@
             <div class="card">
                 <h3>Visuals</h3>
                 <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP. See through every lie on the stage.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="credits">
-        <p class="lies-tag">LIES ARE LOVE</p>
-        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">THE BACKSTAGE</h2>
-        <div class="grid">
-            <div class="credit-card">
-                <img src="https://cdn.discordapp.com/avatars/1474319584134697117/71daebb87416096b29240dde8095995b.png?size=4096" class="profile-img" alt="Aqua">
-                <h3>AQUA</h3>
-                <p style="font-size: 0.8rem; letter-spacing: 2px;">HEAD DEVELOPER</p>
-                <p style="color: var(--text-dim);">Discord: ?</p>
-            </div>
-            <div class="credit-card">
-                <img src="https://cdn.discordapp.com/avatars/1481481892443455680/64e9d1b1e297ac0f8dcef27dc65cf845.png?size=4096" class="profile-img" alt="Aqua">
-                <h3>EARTH</h3>
-                <p style="font-size: 0.8rem; letter-spacing: 2px;">ASSISTANT</p>
-                <p style="color: var(--text-dim);">Discord: @yezxow</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="download">
-        <p class="lies-tag">LIES ARE LOVE</p>
-        <h2 style="font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 3rem;">CHOOSE PLATFORM</h2>
-        <div style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center;">
-            <div class="card" style="padding:40px; width:320px; cursor:pointer;" onclick="window.location.href='Android.html'">
-                <h2 style="font-family:var(--font-head);">ANDROID</h2>
-                <p style="margin:15px 0; color: var(--text-dim);">Universal .APK</p>
-                <div class="btn" style="padding:10px 20px; font-size:0.8rem;">Download</div>
-            </div>
-            <div class="card" style="padding:40px; width:320px; opacity:0.4; cursor:not-allowed;" onclick="alert('Lies are love - PC Coming Soon')">
-                <h2 style="font-family:var(--font-head);">WINDOWS</h2>
-                <p style="margin:15px 0; color: var(--text-dim);">Coming Soon</p>
-                <div class="btn" style="padding:10px 20px; font-size:0.8rem; background:#444;">Locked</div>
             </div>
         </div>
     </section>
