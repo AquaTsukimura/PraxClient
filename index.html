@@ -20,7 +20,7 @@
             --font-body: 'Poppins', sans-serif;
         }
 
-        /* --- Base Styles --- */
+        /* --- Base Reset --- */
         * {
             margin: 0;
             padding: 0;
@@ -88,22 +88,11 @@
 
         .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        /* --- Section Defaults --- */
-        section {
-            min-height: 100vh;
-            padding: 140px 10% 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* --- MATHEMATICALLY PERFECT STAR --- */
+        /* --- AI HOSHINO STAR (NEEDLE SHARP) --- */
         .star-container {
             position: relative;
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
@@ -111,13 +100,16 @@
         }
 
         .ai-star-svg {
-            width: 120px;
-            height: 120px;
-            filter: drop-shadow(0 0 15px white) drop-shadow(0 0 30px var(--primary));
-            animation: starRotate 20s linear infinite;
+            width: 130px;
+            height: 130px;
+            filter: drop-shadow(0 0 10px white) drop-shadow(0 0 25px var(--primary));
+            animation: starRotate 25s linear infinite;
         }
 
-        /* Using precise trigonometry for 100% side-to-side symmetry */
+        /* MATHEMATICAL NEEDLE SYMMETRY:
+           The inner radius is tight (approx 12%) to create the thin-point look 
+           found in Ai's eyes. Points are perfectly mirrored on the Y-axis.
+        */
         .ai-star-svg polygon {
             fill: white;
         }
@@ -129,24 +121,34 @@
 
         .star-glow {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 102, 178, 0.6) 0%, transparent 70%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255, 102, 178, 0.5) 0%, transparent 70%);
             animation: starPulse 4s ease-in-out infinite;
             pointer-events: none;
             z-index: -1;
         }
 
         @keyframes starPulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.7; }
+            0%, 100% { transform: scale(0.9); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.7; }
         }
 
-        /* --- Typography --- */
+        /* --- Sections --- */
+        section {
+            min-height: 100vh;
+            padding: 140px 10% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
         .lies-tag {
             font-family: var(--font-head);
             font-weight: 900;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             color: var(--primary);
             margin-bottom: 1rem;
             text-transform: uppercase;
@@ -154,7 +156,7 @@
 
         h1 {
             font-family: var(--font-head);
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(3.5rem, 12vw, 6rem);
             font-weight: 900;
             line-height: 0.9;
             margin-bottom: 2rem;
@@ -163,49 +165,43 @@
             -webkit-text-fill-color: transparent;
         }
 
-        h2 {
-            font-family: var(--font-head);
-            font-size: 3rem;
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- Cards & Grids --- */
+        /* --- Grid & Cards --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             width: 100%;
+            margin-top: 2rem;
         }
 
         .card, .credit-card {
             background: var(--card-bg);
-            padding: 3.5rem 2rem;
+            padding: 4rem 2rem;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .card:hover, .credit-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
+            transform: translateY(-15px);
             border-color: var(--primary);
-            background: rgba(255, 102, 178, 0.08);
-            box-shadow: 0 20px 50px rgba(255, 102, 178, 0.2);
+            background: rgba(255, 102, 178, 0.1);
+            box-shadow: 0 20px 60px rgba(255, 102, 178, 0.2);
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 3px solid var(--primary);
             margin-bottom: 1.5rem;
-            transition: 0.5s;
             object-fit: cover;
+            transition: 0.6s ease;
         }
 
         .credit-card:hover .profile-img {
-            transform: scale(1.1) rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
             box-shadow: 0 0 30px var(--primary);
         }
 
@@ -216,13 +212,13 @@
             background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 4px;
             font-weight: 800;
             font-family: var(--font-head);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             transition: 0.4s;
-            box-shadow: 0 8px 20px rgba(255, 102, 178, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 102, 178, 0.3);
             border: none;
             cursor: pointer;
         }
@@ -230,16 +226,16 @@
         .btn:hover {
             background: white;
             color: var(--primary);
-            transform: scale(1.05) translateY(-3px);
+            transform: scale(1.05) translateY(-5px);
         }
 
         .showcase-container {
             width: 100%;
             max-width: 900px;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
             border: 2px solid var(--primary);
-            box-shadow: 0 0 60px rgba(255, 102, 178, 0.3);
+            box-shadow: 0 0 80px rgba(255, 102, 178, 0.4);
         }
 
         .showcase-img { width: 100%; display: block; }
@@ -266,18 +262,18 @@
         <div class="star-container">
             <div class="star-glow"></div>
             <svg class="ai-star-svg" viewBox="0 0 100 100">
-                <polygon points="50,5 61,40 98,40 68,62 79,96 50,75 21,96 32,62 2,40 39,40" />
+                <polygon points="50,0 54,42 98,35 59,58 78,98 50,72 22,98 41,58 2,35 46,42" />
             </svg>
         </div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
-        <p style="color: var(--text-dim); max-width: 650px;">The definitive hack suite for Blockman Go. Built for the stage, designed for the win.</p>
-        <a href="#download" class="btn" style="margin-top: 3rem;">Enter Backstage</a>
+        <p style="color: var(--text-dim); max-width: 650px;">A high-performance Idol-themed cheat suite for Blockman Go. Master the stage, see through the lies.</p>
+        <a href="#download" class="btn" style="margin-top: 3rem;">Download APK</a>
     </section>
 
     <section id="showcase">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2>THE INTERFACE</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 2rem;">THE INTERFACE</h2>
         <div class="showcase-container">
             <img src="https://github.com/AquaTsukimura/AiX/blob/main/img/Screenshot_20260318-135154_Blockman_GO.webp?raw=true" class="showcase-img">
         </div>
@@ -285,37 +281,37 @@
 
     <section id="features">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2>IDOL SCRIPTS</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3rem;">CLIENT FEATURES</h2>
         <div class="grid">
             <div class="card">
                 <h3 style="color:var(--primary); margin-bottom:1rem;">Movement</h3>
-                <p style="color:var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for bypass.</p>
+                <p style="color:var(--text-dim);">Fly, Infinite Jump, and high-bypass Speed scripts.</p>
             </div>
             <div class="card">
                 <h3 style="color:var(--primary); margin-bottom:1rem;">Combat</h3>
-                <p style="color:var(--text-dim);">KillAura and Reach expanders. Total stage dominance.</p>
+                <p style="color:var(--text-dim);">Optimized KillAura and Reach. Dominate every duel.</p>
             </div>
             <div class="card">
                 <h3 style="color:var(--primary); margin-bottom:1rem;">Visuals</h3>
-                <p style="color:var(--text-dim);">Full ESP and Tracers. See through every lie.</p>
+                <p style="color:var(--text-dim);">Clean ESP and Tracers. Information is power.</p>
             </div>
         </div>
     </section>
 
     <section id="credits">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2>THE STAFF</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">THE STAFF</h2>
         <div class="grid">
             <div class="credit-card">
                 <img src="https://cdn.discordapp.com/avatars/1474319584134697117/71daebb87416096b29240dde8095995b.png?size=4096" class="profile-img">
                 <h3 style="color:var(--primary);">AQUA</h3>
-                <p style="font-size:0.7rem; letter-spacing:2px;">DEVELOPER</p>
+                <p style="font-size:0.8rem; letter-spacing:2px; margin-top:5px;">DEVELOPER</p>
                 <p style="color:var(--text-dim); margin-top:10px;">Discord: ?</p>
             </div>
             <div class="credit-card">
                 <img src="https://cdn.discordapp.com/avatars/1481481892443455680/64e9d1b1e297ac0f8dcef27dc65cf845.png?size=4096" class="profile-img">
                 <h3 style="color:var(--primary);">EARTH</h3>
-                <p style="font-size:0.7rem; letter-spacing:2px;">ASSISTANT</p>
+                <p style="font-size:0.8rem; letter-spacing:2px; margin-top:5px;">ASSISTANT</p>
                 <p style="color:var(--text-dim); margin-top:10px;">Discord: @yezxow</p>
             </div>
         </div>
@@ -323,22 +319,23 @@
 
     <section id="download">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2>DOWNLOAD</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3.5rem;">GET ACCESS</h2>
         <div class="grid" style="max-width: 800px;">
             <div class="card" onclick="window.location.href='Android.html'" style="cursor:pointer;">
                 <h3>ANDROID</h3>
-                <p style="color:var(--text-dim); margin: 15px 0;">Universal APK</p>
+                <p style="color:var(--text-dim); margin: 15px 0;">Official .APK Build</p>
                 <div class="btn" style="padding:10px 25px; font-size:0.7rem;">Download</div>
             </div>
             <div class="card" style="opacity:0.5; cursor:not-allowed;">
                 <h3>WINDOWS</h3>
-                <p style="color:var(--text-dim); margin: 15px 0;">Coming Soon</p>
+                <p style="color:var(--text-dim); margin: 15px 0;">In Development</p>
                 <div class="btn" style="padding:10px 25px; font-size:0.7rem; background:#444;">Locked</div>
             </div>
         </div>
     </section>
 
     <script>
+        // Particle Background
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -353,7 +350,7 @@
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2;
                 this.opacity = Math.random();
-                this.speed = Math.random() * 0.3;
+                this.speed = Math.random() * 0.2;
             }
             update() {
                 this.y -= this.speed;
@@ -374,6 +371,15 @@
             requestAnimationFrame(animate);
         }
         animate();
+
+        // Smooth Scroll
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+            });
+        });
     </script>
 </body>
 </html>
