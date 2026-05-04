@@ -1,9 +1,7 @@
-Game = {}
+local MEM = MEM
 
-function Game:init()
-  for i = 1, 20 do
-    print("destroying ui...")
-  end
-
-  --todo
+if not MEM then
+  print("Lua loader detected, use Rage's custom VM.")
 end
+
+MEM[0x3872].registerCallBack(MEM[0x3382].onGameReady, MEM[0x8392].init)
